@@ -21,14 +21,11 @@ Route::resource('pegawai', 'PegawaiController');
 // Route::post('/pegawai/store', 'PegawaiController@store');
 
 
-Route::get('/atasan1', 'AtasanController@index')->name('atasan1');
+Route::resource('atasan1', 'AtasanController');
 
 Route::get('/atasan2', 'Atasan2Controller@index')->name('atasan2');
 
 Route::get('/datadiri', 'DiriController@index')->name('datadiri');
-
-Route::resource('tambahdata', 'TambahdataController');
-
 
 Auth::routes();
 

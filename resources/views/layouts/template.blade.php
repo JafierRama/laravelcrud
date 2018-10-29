@@ -4,9 +4,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@7.26.10/dist/sweetalert2.min.css" type="text/css">
   <link rel="stylesheet" href="{{ asset('assets') }}/theme.css" type="text/css"> </head>
-
+  
   <body class="w-100" id="01">
     <nav class="navbar navbar-expand-md bg-secondary navbar-dark">
       <div class="container">
@@ -20,9 +22,9 @@
               <a class="nav-link" href="{{ route('pegawai.index')}}">Data Pegawai</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('atasan1') }}">Data Atasan&nbsp;</a>
+              <a class="nav-link" href="{{ route('atasan1.index') }}">Data Atasan&nbsp;</a>
             </li>
-              <li class="nav-item">
+            <li class="nav-item">
               <a class="nav-link" href="exin2.html">Hasil Exin</a>
             </li>
             <div class="btn-group">
@@ -64,6 +66,12 @@
           <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
           <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-        </body>
+          <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.28.10/dist/sweetalert2.all.min.js"></script>
+          <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 
+          @include('sweetalert::alert')
+
+          @stack('js')
+        </body>
+        
         </html>

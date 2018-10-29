@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Atasan1;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AtasanController extends Controller
 {
@@ -16,7 +17,7 @@ class AtasanController extends Controller
     {
         $atasan = Atasan1::all();
         
-        return view('pages.dataatasan1',compact('atasan'));   //
+        return view('pages.atasan1.dataatasan1',compact('atasan'));   //
     }
     
     /**
@@ -37,7 +38,16 @@ class AtasanController extends Controller
     */
     public function store(Request $request)
     {
-        //
+        $atasan = new Atasan1();
+        $atasan->nama = $request->nama;
+        $atasan->nip = $request->nip;
+        $atasan->jabatan = $request->jabatan;
+        $atasan->save();
+
+        if ($atasan) {
+            Alert::toast('Atasan1 Create Successfully', 'success', 'top-right');
+            return redirect()->route('atasan1.index');
+        }
     }
     
     /**
@@ -59,7 +69,8 @@ class AtasanController extends Controller
     */
     public function edit($id)
     {
-        //
+        $campaign = Atasan1::findOrFail($id);
+        return $campaign;
     }
     
     /**
@@ -69,9 +80,16 @@ class AtasanController extends Controller
     * @param  int  $id
     * @return \Illuminate\Http\Response
     */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $atasan = Atasan1::find($request->id);
+        $atasan->nama = $request->nama;
+        $atasan->nip = $request->nip;
+        $atasan->jabatan = $request->jabatan;
+        $atasan->save();
+
+        Alert::toast('Atasan1 Edited Successfully', 'success', 'top-right');
+        return redirect()->back();
     }
     
     /**
@@ -82,6 +100,12 @@ class AtasanController extends Controller
     */
     public function destroy($id)
     {
-        //
+        // Campaign::where('id', $id)->delete();
+        $atasan = Atasan1::find($id);
+        $atasan->delete();
+        Alert::toast('Atasan1 Deleted Successfully', 'success', 'top-right');
+        
+        return redirect()->back();
     }
 }
+
