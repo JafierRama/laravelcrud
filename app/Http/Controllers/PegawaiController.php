@@ -85,9 +85,8 @@ class PegawaiController extends Controller
     public function edit($id)
     {
         $pegawai = Pegawai::find($id);
-        $pegawai->edit();
 
-        return redirect('pages.pegawai'); //
+        return redirect('pages.pegawai', compact('pegawai')); //
     }
 
     /**
@@ -99,7 +98,8 @@ class PegawaiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $pegawai = Pegawai::find($id);
+        $pegawai->edit();
     }
 
     /**
